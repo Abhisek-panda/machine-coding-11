@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useMovies } from "../main";
 
 const FilterBar = () => {
@@ -71,9 +72,12 @@ const FilterBar = () => {
           })}
         </select>
       </div>
-      <button className="bg-zinc-400 text-black rounded-sm hover:bg-slate-400">
+      <Link
+        to="/add-movie"
+        className="bg-zinc-400 text-black rounded-sm hover:bg-slate-400"
+      >
         Add Movie
-      </button>
+      </Link>
     </div>
   );
 };

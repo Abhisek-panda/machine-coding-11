@@ -34,6 +34,27 @@ export const MovieProvider = ({ children }) => {
 
   const allGenres = [...new Set(extractedGenres)];
 
+  const handleWatchLater = (movie) => {
+    const isMoviePresent = watchList?.find(
+      (m) => m?.id?.toString() === movie?.id.toString()
+    );
+    if (!isMoviePresent) {
+      const movies = [...watchList, movie];
+      setWatchList(movies);
+    } else {
+      const movies = watchList?.map((item) =>
+        item?.id.toString() === movie?.id.toString() ? { ...item, movie } : item
+      );
+      setWatchList(movies);
+    }
+  };
+  const handleRemoveWatchList = (movie) => {
+    const movies = watchList.filter(
+      ({ id }) => id?.toString() !== movie?.id.toString()
+    );
+    setWatchList(movies);
+  };
+
   const filteredMoviesFn = () => {
     const movies = [...newMoviesData];
     const searchFiltered = filters?.search
@@ -65,7 +86,7 @@ export const MovieProvider = ({ children }) => {
             ({ rating }) => rating.toString() === filters?.rating.toString()
           )
       : genreFiltered;
-
+    handleWatchLater;
     return ratingFiltered;
   };
   return (
@@ -83,6 +104,8 @@ export const MovieProvider = ({ children }) => {
         filteredMoviesFn,
         watchList,
         setWatchList,
+        handleWatchLater,
+        handleRemoveWatchList,
       }}
     >
       {children}

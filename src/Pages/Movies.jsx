@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FilterBar from "../Components/FilterBar";
 import Navbar from "../Components/Navbar";
 import { useMovies } from "../main";
@@ -6,8 +6,13 @@ import { useMovies } from "../main";
 const Movies = () => {
   const { filteredMoviesFn } = useMovies();
   const filteredMovies = filteredMoviesFn();
+  const navigate = useNavigate();
   // console.log({ filteredMovies });
 
+  const handleMovieDetail = (id) => {
+    navigate(`/movies/${id}`);
+    console.log({ id });
+  };
   console.log(filteredMovies);
 
   return (
@@ -33,17 +38,15 @@ const Movies = () => {
                     src={movie?.imageURL}
                     alt={movie?.title}
                     className="w-72 h-72 object-cover rounded-xl"
+                    onClick={() => handleMovieDetail(movie?.id)}
                   />
                   <div className="flex flex-col items-center">
                     <h1 className="text-xl font-bold">{movie?.title}</h1>
                     <p className="text-center">{movie?.summary}</p>
                   </div>
-                  <Link
-                    to="/add-movie"
-                    className="bg-zinc-400 text-black rounded-sm hover:bg-slate-400"
-                  >
+                  <button className="bg-zinc-400 text-black rounded-sm hover:bg-slate-400">
                     Watch Later
-                  </Link>
+                  </button>
                 </div>
               );
             })

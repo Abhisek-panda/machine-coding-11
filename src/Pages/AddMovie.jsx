@@ -13,6 +13,38 @@ const AddMovie = () => {
             <label htmlFor="movie-title">Title:</label>
             <input type="text" id="movie-title" />
           </div>
+          <div>
+            <label htmlFor="movie-year">Year:</label>
+            <input type="number" id="movie-year" />
+          </div>
+          <div>
+            <label htmlFor="movie-genre">Genre:</label>
+            <input type="text" id="movie-genre" />
+          </div>
+          <div>
+            <label htmlFor="movie-rating">Rating:</label>
+            <input type="number" id="movie-rating" />
+          </div>
+          <div>
+            <label htmlFor="movie-title">Title:</label>
+            <input type="text" id="movie-title" />
+          </div>
+          <div>
+            <label htmlFor="movie-title">Title:</label>
+            <input type="text" id="movie-title" />
+          </div>
+          <div>
+            <label htmlFor="movie-title">Title:</label>
+            <input type="text" id="movie-title" />
+          </div>
+          <div>
+            <label htmlFor="movie-title">Title:</label>
+            <input type="text" id="movie-title" />
+          </div>
+          <div>
+            <label htmlFor="movie-title">Title:</label>
+            <input type="text" id="movie-title" />
+          </div>
         </div>
       </div>
     </div>
