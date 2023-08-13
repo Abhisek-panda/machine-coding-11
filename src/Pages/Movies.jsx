@@ -1,10 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FilterBar from "../Components/FilterBar";
 import Navbar from "../Components/Navbar";
 import { useMovies } from "../main";
 
 const Movies = () => {
-  const { filteredMoviesFn } = useMovies();
+  const { filteredMoviesFn, watchListFn } = useMovies();
   const filteredMovies = filteredMoviesFn();
   const navigate = useNavigate();
   // console.log({ filteredMovies });
@@ -29,6 +29,7 @@ const Movies = () => {
             <h1>Nothing To Show</h1>
           ) : (
             filteredMovies.map((movie) => {
+              const watchListMovie = watchListFn(movie);
               return (
                 <div
                   key={movie?.id}
@@ -44,9 +45,13 @@ const Movies = () => {
                     <h1 className="text-xl font-bold">{movie?.title}</h1>
                     <p className="text-center">{movie?.summary}</p>
                   </div>
-                  <button className="bg-zinc-400 text-black rounded-sm hover:bg-slate-400">
-                    Watch Later
-                  </button>
+                  {watchListMovie ? (
+                    <button className="bg-zinc-400 text-black rounded-sm hover:bg-slate-400">
+                      Watch Later
+                    </button>
+                  ) : (
+                    <button>Remove From Watch List</button>
+                  )}
                 </div>
               );
             })

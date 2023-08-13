@@ -55,6 +55,9 @@ export const MovieProvider = ({ children }) => {
     setWatchList(movies);
   };
 
+  const watchListFn = (movie) => {
+    watchList.find(({ id }) => id === movie?.id);
+  };
   const filteredMoviesFn = () => {
     const movies = [...newMoviesData];
     const searchFiltered = filters?.search
@@ -106,6 +109,7 @@ export const MovieProvider = ({ children }) => {
         setWatchList,
         handleWatchLater,
         handleRemoveWatchList,
+        watchListFn,
       }}
     >
       {children}

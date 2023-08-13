@@ -3,12 +3,11 @@ import Navbar from "../Components/Navbar";
 import { useMovies } from "../main";
 
 const WatchList = () => {
-  const { watchList, handleWatchLater } = useMovies();
+  const { watchList, handleWatchLater, watchListFn } = useMovies();
   const navigate = useNavigate();
   const handleMovieDetail = (id) => {
     navigate(`/movies/${id}`);
   };
-  console.log(watchList);
   return (
     <div>
       <nav>
@@ -16,6 +15,8 @@ const WatchList = () => {
       </nav>
       <div>
         {watchList?.map((movie) => {
+          const watchListItem = watchListFn(movie);
+
           return (
             <div key={movie?.id}>
               <div
@@ -32,12 +33,13 @@ const WatchList = () => {
                   <h1 className="text-xl font-bold">{movie?.title}</h1>
                   <p className="text-center">{movie?.summary}</p>
                 </div>
-                <button
-                  onClick={() => handleWatchLater(movie)}
-                  className="bg-zinc-400 text-black rounded-sm hover:bg-slate-400"
-                >
-                  Watch Later
-                </button>
+                {watchListItem ? (
+                  <button onClick={() => handleWatchLater(movie)}>
+                    Watch Later
+                  </button>
+                ) : (
+                  <button>Remove from Watch List</button>
+                )}
               </div>
             </div>
           );

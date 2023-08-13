@@ -24,9 +24,6 @@ const Navbar = () => {
         <NavLink to="/watch-list" className="hover:text-gray-300">
           Watch List
         </NavLink>
-        <NavLink to="/starred-movies" className="hover:text-gray-300">
-          Starred Movies
-        </NavLink>
       </div>
     </div>
   );

@@ -3,12 +3,13 @@ import { useMovies } from "../main";
 import Navbar from "../Components/Navbar";
 
 const MovieDetails = () => {
-  const { newMoviesData, handleWatchLater } = useMovies();
+  const { newMoviesData, handleWatchLater, watchListFn } = useMovies();
   const { movieId } = useParams();
   const singleMovie = newMoviesData?.find(
     (m) => m?.id.toString() === movieId?.toString()
   );
 
+  const watchListItem = watchListFn(singleMovie);
   return (
     <div className="flex flex-col gap-5">
       <nav>
@@ -33,9 +34,13 @@ const MovieDetails = () => {
           </div>
           <p>Summary: {singleMovie?.summary}</p>
           <div>
-            <button onClick={() => handleWatchLater(singleMovie)}>
-              Watch Later
-            </button>
+            {watchListItem ? (
+              <button onClick={() => handleWatchLater(singleMovie)}>
+                Watch Later
+              </button>
+            ) : (
+              <button>Remove from Watch List</button>
+            )}
           </div>
         </div>
       </div>
