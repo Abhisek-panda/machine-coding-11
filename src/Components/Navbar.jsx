@@ -13,8 +13,8 @@ const Navbar = () => {
       </NavLink>
       <input
         type="text"
-        className="border-2 border-solid border-black rounded-md w-80 text-black"
-        placeholder="Search With Movie Title & Director"
+        className="border-2 border-solid border-black rounded-md w-80 text-black p-[2px]"
+        placeholder="Search With Movie Title ,Director & Cast"
         onChange={(e) => setFilters({ ...filters, search: e.target.value })}
       />
       <div className="flex gap-10 text-lg">

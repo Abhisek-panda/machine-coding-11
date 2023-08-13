@@ -15,7 +15,7 @@ const FilterBar = () => {
   return (
     <div className="flex gap-5 justify-around items-center">
       <h1>Movies</h1>
-      <div>
+      <div className="border-2 border-black border-solid rounded-sm p-[2px]">
         <select
           name=""
           id=""
@@ -34,7 +34,7 @@ const FilterBar = () => {
           })}
         </select>
       </div>
-      <div>
+      <div className="border-2 border-black border-solid rounded-sm p-[2px]">
         <select
           name=""
           id=""
@@ -53,7 +53,7 @@ const FilterBar = () => {
           })}
         </select>
       </div>
-      <div>
+      <div className="border-2 border-black border-solid rounded-sm p-[2px]">
         <select
           name=""
           id=""
@@ -74,7 +74,7 @@ const FilterBar = () => {
       </div>
       <Link
         to="/add-movie"
-        className="bg-zinc-400 text-black rounded-sm hover:bg-slate-400"
+        className="bg-zinc-400 text-black rounded-sm hover:bg-red-400 p-[4px]"
       >
         Add Movie
       </Link>

@@ -50,13 +50,14 @@ export const MovieProvider = ({ children }) => {
   };
   const handleRemoveWatchList = (movie) => {
     const movies = watchList.filter(
-      ({ id }) => id?.toString() !== movie?.id.toString()
+      (m) => m?.id?.toString() !== movie?.id.toString()
     );
     setWatchList(movies);
   };
 
   const watchListFn = (movie) => {
-    watchList.find(({ id }) => id === movie?.id);
+    const wl = watchList.find((m) => m?.id.toString() === movie?.id.toString());
+    return wl;
   };
   const filteredMoviesFn = () => {
     const movies = [...newMoviesData];

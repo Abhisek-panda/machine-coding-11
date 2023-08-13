@@ -3,7 +3,12 @@ import { useMovies } from "../main";
 import Navbar from "../Components/Navbar";
 
 const MovieDetails = () => {
-  const { newMoviesData, handleWatchLater, watchListFn } = useMovies();
+  const {
+    newMoviesData,
+    handleWatchLater,
+    watchListFn,
+    handleRemoveWatchList,
+  } = useMovies();
   const { movieId } = useParams();
   const singleMovie = newMoviesData?.find(
     (m) => m?.id.toString() === movieId?.toString()
@@ -35,11 +40,19 @@ const MovieDetails = () => {
           <p>Summary: {singleMovie?.summary}</p>
           <div>
             {watchListItem ? (
-              <button onClick={() => handleWatchLater(singleMovie)}>
-                Watch Later
+              <button
+                className="bg-red-400 text-black rounded-sm hover:bg-zinc-400 p-[4px]"
+                onClick={() => handleRemoveWatchList(singleMovie)}
+              >
+                Remove from Watch List
               </button>
             ) : (
-              <button>Remove from Watch List</button>
+              <button
+                className="bg-zinc-400 text-black rounded-sm hover:bg-red-400 p-[4px]"
+                onClick={() => handleWatchLater(singleMovie)}
+              >
+                Watch Later
+              </button>
             )}
           </div>
         </div>
